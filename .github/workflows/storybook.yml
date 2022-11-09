@@ -1,0 +1,23 @@
+name: Build and Deploy
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        description: "Environment"
+        required: true
+        default: dev
+        type: choice
+        options:
+          - dev
+          - test
+          - prod
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build
+        run: |
+          npm install
+          npm run predeploy
+      - name: deploy
+        run: npm run deploy-storybook
