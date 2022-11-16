@@ -15,7 +15,7 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@develop
+      - uses: actions/checkout@v2.3.1
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v1
         with:
@@ -26,7 +26,7 @@ jobs:
           # deploy to Azure Web App.
           npm install
           npm run build-storybook
-        working-directory: /
+        working-directory: /docs-build
       - name: "Deploy to Azure WebApp"
         uses: azure/webapps-deploy@v2
         with:
