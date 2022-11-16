@@ -26,7 +26,7 @@ jobs:
           # deploy to Azure Web App.
           npm install
           npm run build-storybook
-        working-directory: /docs-build
+        working-directory: /
       - name: "Deploy to Azure WebApp"
         uses: azure/webapps-deploy@v2
         with:
