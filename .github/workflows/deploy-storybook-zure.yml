@@ -57,7 +57,7 @@ jobs:
       - name: 📁 Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: "storybook/storybook-static"
+          path: "storybook-static"
       - name: "Deploy to Azure WebApp"
         uses: azure/webapps-deploy@v2
         with:
