@@ -38,7 +38,7 @@ name: Build and Deploy Storybook
 on:
   push:
     branches:
-      - main
+      - develop
 env:
   AZURE_WEBAPP_NAME: storybook-test_group # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: "docs-build"
