@@ -33,3 +33,47 @@
 #           app-name: ${{ env.AZURE_WEBAPP_NAME }}
 #           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
 #           package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
+name: Build and Deploy Storybook
+on:
+  push:
+    branches:
+      - main
+env:
+  AZURE_WEBAPP_NAME: storybook-test_group # set this to your application's name
+  AZURE_WEBAPP_PACKAGE_PATH: "docs-build"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v2.3.1
+        with:
+          persist-credentials: false
+      - name: 🔧 Install dependencies
+        run: npm i --prefix storybook
+      - name: 🏗 Build
+        run: npm run build-storybook --prefix storybook
+      - name: 📁 Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: "storybook/storybook-static"
+      - name: "Deploy to Azure WebApp"
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+  # deploy:
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   permissions:
+  #     pages: write
+  #     id-token: write
+  #   steps:
+  #     - name: 🚀 Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@v1
