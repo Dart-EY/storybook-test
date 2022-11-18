@@ -51,9 +51,9 @@ jobs:
         with:
           persist-credentials: false
       - name: 🔧 Install dependencies
-        run: npm i --prefix storybook
+        run: npm i
       - name: 🏗 Build
-        run: npm run build-storybook --prefix storybook
+        run: npm run build-storybook
       - name: 📁 Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
