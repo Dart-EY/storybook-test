@@ -22,7 +22,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -o docs-build build && pagecrypt docs-build/index.html docs-build/index.html test123"
+    "build-storybook": "build-storybook -o docs-build build",
+    "encrypt-page": "pagecrypt docs-build/index.html docs-build/index.html test123"
   },
   "eslintConfig": {
     "extends": [

@@ -18,6 +18,8 @@ jobs:
         run: npm i
       - name: 🏗 Build
         run: npm run build-storybook
+      - name: 🔒 Encrypt
+        run: npm run encrypt-page
       - name: 📁 Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
