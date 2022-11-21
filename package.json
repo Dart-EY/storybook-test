@@ -22,7 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -o docs-build build && cd docs-build && mkdir dist && cd .. && cp docs-build/index.html docs-build/dist/ && pagecrypt docs-build/dist/index.html docs-build/index.html test123 && rm -r docs-build/dist"
+    "build-storybook": "build-storybook -o docs-build build && pagecrypt docs-build/index.html docs-build/index.html test123"
   },
   "eslintConfig": {
     "extends": [
